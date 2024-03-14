@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      .container {
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+
+   <div id="root">
+    <h1>JS Clock</h1>
+    <div id="js-clock"></div>
+<br>
+    <h1>React Clock</h1>
+    <div id="react-clock"></div>
+   </div>
+
+   <div id="new">
+
+   </div>
+    
+   <div id="components">
+
+   </div>
+
+    <script type="text/babel">
+      const jsClockEl = document.getElementById('js-clock')
+      const reactClockEl = document.getElementById('react-clock');
+
+      function tick(){
+        const time = new Date().toLocaleTimeString();
+        const clockTemplate = `<div> <span> ${time} </span> </div>`
+
+        jsClockEl.innerHTML = clockTemplate;
+      }
+      setInterval(tick, 1000)
+      
+
+
+      function ReactTick() {
+        const time = new Date().toLocaleTimeString();
+        const clockTemplate = <div> <span> {time} </span> </div>
+
+        root.render(clockTemplate );
+        
+        
+        
+      }
+
+    
+      
+
+      ReactDOM.createRoot(document.getElementById("components")).render(<NavBar/>)
+
+      setInterval(ReactTick, 1000)
+      
+
+      
+      // Create a root instance using createRoot
+      const root = ReactDOM.createRoot(document.getElementById("react-clock"));
+      
+      // Render the element to the root
+     
+    </script>
+  </body>
+</html>
